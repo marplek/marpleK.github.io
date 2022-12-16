@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: http://marplek.github.io/sitemap-index.xml
+Host: marplek.github.io
