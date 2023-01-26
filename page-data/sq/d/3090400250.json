@@ -1,0 +1,1 @@
+{"data":{"minimalBlogConfig":{"basePath":"/","blogPath":"/blog","postsPath":"content/posts","pagesPath":"content/pages","tagsPath":"/tags","externalLinks":[{"name":"Github","url":"https://github.com/marpleK"}],"navigation":[{"title":"About","slug":"/about"},{"title":"Blog","slug":"/blog"},{"title":"Tags","slug":"/tags"}],"showLineNumbers":false,"showCopyButton":true}}}
