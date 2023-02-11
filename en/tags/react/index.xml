@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>React on MarpleK</title>
-    <link>blog.marplek.online/en/tags/react/</link>
+    <link>http://blog.marplek.online/en/tags/react/</link>
     <description>Recent content in React on MarpleK</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 11 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="blog.marplek.online/en/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 11 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.marplek.online/en/tags/react/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Search-skill-in-104</title>
-      <link>blog.marplek.online/en/posts/search-skill-in-104/</link>
+      <link>http://blog.marplek.online/en/posts/search-skill-in-104/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>blog.marplek.online/en/posts/search-skill-in-104/</guid>
+      <guid>http://blog.marplek.online/en/posts/search-skill-in-104/</guid>
       <description>http://search.marplek.online</description>
     </item>
     
