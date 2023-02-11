@@ -2,125 +2,125 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on MarpleK</title>
-    <link>http://localhost:1313/en/tags/</link>
+    <link>blog.marplek.online/en/tags/</link>
     <description>Recent content in Tags on MarpleK</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Aug 2022 15:38:30 +0800</lastBuildDate><atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Aug 2022 15:38:30 +0800</lastBuildDate><atom:link href="blog.marplek.online/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>documentation</title>
-      <link>http://localhost:1313/en/tags/documentation/</link>
+      <link>blog.marplek.online/en/tags/documentation/</link>
       <pubDate>Tue, 09 Aug 2022 15:38:30 +0800</pubDate>
       
-      <guid>http://localhost:1313/en/tags/documentation/</guid>
+      <guid>blog.marplek.online/en/tags/documentation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>guide</title>
-      <link>http://localhost:1313/en/tags/guide/</link>
+      <link>blog.marplek.online/en/tags/guide/</link>
       <pubDate>Tue, 09 Aug 2022 15:38:30 +0800</pubDate>
       
-      <guid>http://localhost:1313/en/tags/guide/</guid>
+      <guid>blog.marplek.online/en/tags/guide/</guid>
       <description></description>
     </item>
     
     <item>
       <title>css</title>
-      <link>http://localhost:1313/en/tags/css/</link>
+      <link>blog.marplek.online/en/tags/css/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/css/</guid>
+      <guid>blog.marplek.online/en/tags/css/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>http://localhost:1313/en/tags/docker/</link>
+      <link>blog.marplek.online/en/tags/docker/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/docker/</guid>
+      <guid>blog.marplek.online/en/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Fastapi</title>
-      <link>http://localhost:1313/en/tags/fastapi/</link>
+      <link>blog.marplek.online/en/tags/fastapi/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/fastapi/</guid>
+      <guid>blog.marplek.online/en/tags/fastapi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>html</title>
-      <link>http://localhost:1313/en/tags/html/</link>
+      <link>blog.marplek.online/en/tags/html/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/html/</guid>
+      <guid>blog.marplek.online/en/tags/html/</guid>
       <description></description>
     </item>
     
     <item>
       <title>markdown</title>
-      <link>http://localhost:1313/en/tags/markdown/</link>
+      <link>blog.marplek.online/en/tags/markdown/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/markdown/</guid>
+      <guid>blog.marplek.online/en/tags/markdown/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nginx</title>
-      <link>http://localhost:1313/en/tags/nginx/</link>
+      <link>blog.marplek.online/en/tags/nginx/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/nginx/</guid>
+      <guid>blog.marplek.online/en/tags/nginx/</guid>
       <description></description>
     </item>
     
     <item>
       <title>React</title>
-      <link>http://localhost:1313/en/tags/react/</link>
+      <link>blog.marplek.online/en/tags/react/</link>
       <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/react/</guid>
+      <guid>blog.marplek.online/en/tags/react/</guid>
       <description></description>
     </item>
     
     <item>
       <title>privacy</title>
-      <link>http://localhost:1313/en/tags/privacy/</link>
+      <link>blog.marplek.online/en/tags/privacy/</link>
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/privacy/</guid>
+      <guid>blog.marplek.online/en/tags/privacy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>shortcodes</title>
-      <link>http://localhost:1313/en/tags/shortcodes/</link>
+      <link>blog.marplek.online/en/tags/shortcodes/</link>
       <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/shortcodes/</guid>
+      <guid>blog.marplek.online/en/tags/shortcodes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>text</title>
-      <link>http://localhost:1313/en/tags/text/</link>
+      <link>blog.marplek.online/en/tags/text/</link>
       <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/text/</guid>
+      <guid>blog.marplek.online/en/tags/text/</guid>
       <description></description>
     </item>
     
     <item>
       <title>emoji</title>
-      <link>http://localhost:1313/en/tags/emoji/</link>
+      <link>blog.marplek.online/en/tags/emoji/</link>
       <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/en/tags/emoji/</guid>
+      <guid>blog.marplek.online/en/tags/emoji/</guid>
       <description></description>
     </item>
     
