@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computational geometry on MarpleK</title>
+    <link>http://blog.marplek.online/tags/computational-geometry/</link>
+    <description>Recent content in Computational geometry on MarpleK</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 05 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="http://blog.marplek.online/tags/computational-geometry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>判斷點是否在多邊形內</title>
+      <link>http://blog.marplek.online/posts/21d3930ecc478a06/</link>
+      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://blog.marplek.online/posts/21d3930ecc478a06/</guid>
+      <description>射線法就是以判斷點開始，向右（或向左）的水平方向作一射線，計算該射線與多邊形每條邊的交點個數，如果交點個數為奇數，則點位於多邊形內，偶數則在</description>
+    </item>
+    
+  </channel>
+</rss>
