@@ -106,6 +106,21 @@
                 href="http://blog.marplek.online/posts/"
                 />
   </url><url>
+    <loc>http://blog.marplek.online/tags/algorithm/</loc>
+    <lastmod>2022-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://blog.marplek.online/tags/c&#43;&#43;/</loc>
+    <lastmod>2022-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://blog.marplek.online/tags/computational-geometry/</loc>
+    <lastmod>2022-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://blog.marplek.online/tags/python/</loc>
+    <lastmod>2022-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://blog.marplek.online/posts/21d3930ecc478a06/</loc>
+    <lastmod>2022-03-05T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://blog.marplek.online/posts/search-skill-in-104/</loc>
     <lastmod>2020-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -353,15 +368,6 @@
                 href="http://blog.marplek.online/posts/math-typesetting/"
                 />
   </url><url>
-    <loc>http://blog.marplek.online/tags/algorithm/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://blog.marplek.online/tags/c&#43;&#43;/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://blog.marplek.online/tags/computational-geometry/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://blog.marplek.online/tags/emoji/</loc>
     <lastmod>2019-03-05T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -387,12 +393,6 @@
                 hreflang="zh-tw"
                 href="http://blog.marplek.online/posts/emoji-support/"
                 />
-  </url><url>
-    <loc>http://blog.marplek.online/tags/python/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://blog.marplek.online/posts/21d3930ecc478a06/</loc>
-    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://blog.marplek.online/about/</loc>
     <lastmod>2019-02-28T00:00:00+00:00</lastmod>
