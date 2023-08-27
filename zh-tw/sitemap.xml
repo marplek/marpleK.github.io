@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://blog.marplek.online/</loc>
-    <lastmod>2023-08-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-09T15:38:30+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -13,38 +13,6 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://blog.marplek.online/"
-                />
-  </url><url>
-    <loc>http://blog.marplek.online/tags/hi/</loc>
-    <lastmod>2023-08-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://blog.marplek.online/posts/hi/</loc>
-    <lastmod>2023-08-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://blog.marplek.online/tags/</loc>
-    <lastmod>2023-08-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://blog.marplek.online/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://blog.marplek.online/tags/"
-                />
-  </url><url>
-    <loc>http://blog.marplek.online/posts/</loc>
-    <lastmod>2023-08-27T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://blog.marplek.online/en/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://blog.marplek.online/posts/"
                 />
   </url><url>
     <loc>http://blog.marplek.online/tags/documentation/</loc>
@@ -99,6 +67,19 @@
                 href="http://blog.marplek.online/series/"
                 />
   </url><url>
+    <loc>http://blog.marplek.online/tags/</loc>
+    <lastmod>2022-08-09T15:38:30+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://blog.marplek.online/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://blog.marplek.online/tags/"
+                />
+  </url><url>
     <loc>http://blog.marplek.online/series/themes-guide/</loc>
     <lastmod>2022-08-09T15:38:30+08:00</lastmod>
     <xhtml:link
@@ -110,6 +91,19 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="http://blog.marplek.online/series/themes-guide/"
+                />
+  </url><url>
+    <loc>http://blog.marplek.online/posts/</loc>
+    <lastmod>2022-08-09T15:38:30+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://blog.marplek.online/en/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://blog.marplek.online/posts/"
                 />
   </url><url>
     <loc>http://blog.marplek.online/tags/algorithm/</loc>
