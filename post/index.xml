@@ -39,7 +39,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;此外，Factory模式還允許我們暴露出比類更小的&amp;quot;表面積&amp;quot;被擴展或使用，提供了一種更靈活、更健壯的方法來創建物件，並允許開發者在不修改現有代碼的情況下進行重構或擴展功能。&lt;/p&gt;
-&lt;h3 id=&#34;範例&#34;&gt;範例&lt;/h3&gt;
+&lt;h2 id=&#34;基本範例&#34;&gt;基本範例&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
