@@ -12,9 +12,19 @@
         <pubDate>Sun, 05 Mar 2023 00:00:00 +0000</pubDate>
         
         <guid>https://blog.marplek.online/p/node.js-%E5%B7%A5%E5%BB%A0%E6%A8%A1%E5%BC%8F-factory-design-pattern/</guid>
-        <description>&lt;p&gt;在Node.js中，Factory模式的主要優勢是能夠將物件的創建與其具體的實現解耦。&lt;/p&gt;
-&lt;p&gt;例如，創建Image。
-比起直接創建Image的類，&lt;/p&gt;
+        <description>&lt;p&gt;在Node.js中，工廠模式 (Factory Design Pattern)的主要的優點有&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;解耦對象的創建和實現&lt;/strong&gt;：工廠模式允許我們將物件(object)的創建過程與其具體的實現分開。這意味著，如果需要更改物件的實現方式，只需更改工廠函數，而不需要修改使用該物件的其他代碼。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;動態創建對象&lt;/strong&gt;：工廠模式允許在運行時基於特定條件動態地創建物件。例如，根據配置或環境變量，可以選擇返回不同的物件實例。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;封裝&lt;/strong&gt;：工廠模式可以利用JavaScript的閉包特性來實現封裝，確保某些對象的內部細節不被外部訪問。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提供一致的接口&lt;/strong&gt;：工廠模式確保所有從工廠返回的物件都有一致的接口，這使得使用這些物件的代碼更加簡單和可預測。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;簡化代碼和提高可維護性&lt;/strong&gt;：由於物件的創建邏輯被集中在一個地方，因此更容易進行更改和維護。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;靈活性&lt;/strong&gt;：工廠模式提供了很大的靈活性，允許輕鬆地添加新的物件類型或更改現有物件的實現方式。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;更好的控制物件的生命週期&lt;/strong&gt;：工廠模式允許更細緻地控制物件的創建和初始化過程，例如，可以在物件被返回之前進行一些額外的設置或檢查。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;例如，需要創建Image，&lt;br&gt;
+比起直接創建Image的類，&lt;br&gt;
+這樣的方式幾乎把物件的創建方式定死了&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -39,7 +49,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;此外，Factory模式還允許我們暴露出比類更小的&amp;quot;表面積&amp;quot;被擴展或使用，提供了一種更靈活、更健壯的方法來創建物件，並允許開發者在不修改現有代碼的情況下進行重構或擴展功能。&lt;/p&gt;
-&lt;h2 id=&#34;基本範例&#34;&gt;基本範例&lt;/h2&gt;
+&lt;h3 id=&#34;範例&#34;&gt;範例&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1

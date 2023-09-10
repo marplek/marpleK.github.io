@@ -208,7 +208,11 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#基本範例">基本範例</a></li>
+    <li>
+      <ol>
+        <li><a href="#範例">範例</a></li>
+      </ol>
+    </li>
     <li><a href="#封裝">封裝</a></li>
   </ol>
 </nav>
@@ -293,9 +297,19 @@
     <section class="article-content">
     
     
-    <p>在Node.js中，Factory模式的主要優勢是能夠將物件的創建與其具體的實現解耦。</p>
-<p>例如，創建Image。
-比起直接創建Image的類，</p>
+    <p>在Node.js中，工廠模式 (Factory Design Pattern)的主要的優點有</p>
+<ol>
+<li><strong>解耦對象的創建和實現</strong>：工廠模式允許我們將物件(object)的創建過程與其具體的實現分開。這意味著，如果需要更改物件的實現方式，只需更改工廠函數，而不需要修改使用該物件的其他代碼。</li>
+<li><strong>動態創建對象</strong>：工廠模式允許在運行時基於特定條件動態地創建物件。例如，根據配置或環境變量，可以選擇返回不同的物件實例。</li>
+<li><strong>封裝</strong>：工廠模式可以利用JavaScript的閉包特性來實現封裝，確保某些對象的內部細節不被外部訪問。</li>
+<li><strong>提供一致的接口</strong>：工廠模式確保所有從工廠返回的物件都有一致的接口，這使得使用這些物件的代碼更加簡單和可預測。</li>
+<li><strong>簡化代碼和提高可維護性</strong>：由於物件的創建邏輯被集中在一個地方，因此更容易進行更改和維護。</li>
+<li><strong>靈活性</strong>：工廠模式提供了很大的靈活性，允許輕鬆地添加新的物件類型或更改現有物件的實現方式。</li>
+<li><strong>更好的控制物件的生命週期</strong>：工廠模式允許更細緻地控制物件的創建和初始化過程，例如，可以在物件被返回之前進行一些額外的設置或檢查。</li>
+</ol>
+<p>例如，需要創建Image，<br>
+比起直接創建Image的類，<br>
+這樣的方式幾乎把物件的創建方式定死了</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -320,7 +334,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>此外，Factory模式還允許我們暴露出比類更小的&quot;表面積&quot;被擴展或使用，提供了一種更靈活、更健壯的方法來創建物件，並允許開發者在不修改現有代碼的情況下進行重構或擴展功能。</p>
-<h2 id="基本範例">基本範例</h2>
+<h3 id="範例">範例</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
