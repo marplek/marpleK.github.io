@@ -208,12 +208,11 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li>
-      <ol>
-        <li><a href="#範例">範例</a></li>
-      </ol>
-    </li>
+    <li><a href="#優點">優點</a></li>
+    <li><a href="#基本介紹">基本介紹</a></li>
+    <li><a href="#範例">範例</a></li>
     <li><a href="#封裝">封裝</a></li>
+    <li><a href="#練習">練習</a></li>
   </ol>
 </nav>
         </div>
@@ -282,7 +281,7 @@
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    3 minute read
                 </time>
             </div>
         
@@ -297,7 +296,8 @@
     <section class="article-content">
     
     
-    <p>在Node.js中，工廠模式 (Factory Design Pattern)的主要的優點有</p>
+    <h2 id="優點">優點</h2>
+<p>在Node.js中，工廠模式 (Factory Design Pattern)的主要的優點有</p>
 <ol>
 <li><strong>解耦對象的創建和實現</strong>：工廠模式允許我們將物件(object)的創建過程與其具體的實現分開。這意味著，如果需要更改物件的實現方式，只需更改工廠函數，而不需要修改使用該物件的其他代碼。</li>
 <li><strong>動態創建對象</strong>：工廠模式允許在運行時基於特定條件動態地創建物件。例如，根據配置或環境變量，可以選擇返回不同的物件實例。</li>
@@ -307,6 +307,7 @@
 <li><strong>靈活性</strong>：工廠模式提供了很大的靈活性，允許輕鬆地添加新的物件類型或更改現有物件的實現方式。</li>
 <li><strong>更好的控制物件的生命週期</strong>：工廠模式允許更細緻地控制物件的創建和初始化過程，例如，可以在物件被返回之前進行一些額外的設置或檢查。</li>
 </ol>
+<h2 id="基本介紹">基本介紹</h2>
 <p>例如，需要創建Image，<br>
 比起直接創建Image的類，<br>
 這樣的方式幾乎把物件的創建方式定死了</p>
@@ -328,13 +329,13 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">createImage</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+	<span class="k">return</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="kr">const</span> <span class="nx">image</span> <span class="o">=</span> <span class="nx">createImage</span><span class="p">(</span><span class="s1">&#39;photo.jpeg&#39;</span><span class="p">)</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>此外，Factory模式還允許我們暴露出比類更小的&quot;表面積&quot;被擴展或使用，提供了一種更靈活、更健壯的方法來創建物件，並允許開發者在不修改現有代碼的情況下進行重構或擴展功能。</p>
-<h3 id="範例">範例</h3>
+</div><p>此外，Factory模式允許我們暴露出比類更小的&quot;表面積&quot;被擴展或使用，提供了一種更靈活、更健壯的方法來創建物件，並允許開發者在不修改現有代碼的情況下進行重構或擴展功能。</p>
+<h2 id="範例">範例</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -505,7 +506,118 @@
 </code></pre></td></tr></table>
 </div>
 </div><p><code>createPerson</code>工廠函數內部有一個<code>privateProperties</code>對象，它存儲了私有屬性。外部無法直接訪問這些私有屬性，只能通過公開的方法來訪問。這就是封裝的一個簡單實現，它確保了對象的內部狀態和實現細節不會被外部代碼直接訪問或修改。</p>
+<h2 id="練習">練習</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 定義ColorConsole及其子類
+</span><span class="c1"></span><span class="kr">class</span> <span class="nx">ColorConsole</span> <span class="p">{</span> 
+	<span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span> 
+		<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span> 
+	<span class="p">}</span> 
+<span class="p">}</span>
 
+<span class="kr">class</span> <span class="nx">RedConsole</span> <span class="kr">extends</span> <span class="nx">ColorConsole</span><span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\x1b[31m</span><span class="si">${</span><span class="nx">message</span><span class="si">}</span><span class="sb">\x1b[0m`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">BlueConsole</span> <span class="kr">extends</span> <span class="nx">ColorConsole</span><span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\x1b[34m</span><span class="si">${</span><span class="nx">message</span><span class="si">}</span><span class="sb">\x1b[0m`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">GreenConsole</span> <span class="kr">extends</span> <span class="nx">ColorConsole</span><span class="p">{</span>
+    <span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`\x1b[32m</span><span class="si">${</span><span class="nx">message</span><span class="si">}</span><span class="sb">\x1b[0m`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 創建工廠函數
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">createColorConsole</span><span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">color</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()){</span>
+	    <span class="k">case</span> <span class="s1">&#39;red&#39;</span><span class="o">:</span>
+		    <span class="k">return</span> <span class="k">new</span> <span class="nx">RedConsole</span><span class="p">();</span>
+	    <span class="k">case</span> <span class="s1">&#39;blue&#39;</span><span class="o">:</span>
+		    <span class="k">return</span> <span class="k">new</span> <span class="nx">BlueConsole</span><span class="p">();</span>
+	    <span class="k">case</span> <span class="s1">&#39;green&#39;</span><span class="o">:</span>
+		    <span class="k">return</span> <span class="k">new</span> <span class="nx">GreenConsole</span><span class="p">();</span>
+		<span class="k">default</span><span class="o">:</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="sb">`Unknow color: </span><span class="si">${</span><span class="nx">color</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 使用工廠函數
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;readline&#39;</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="nx">input</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="nx">output</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">});</span>
+
+<span class="nx">rl</span><span class="p">.</span><span class="nx">question</span><span class="p">(</span><span class="s1">&#39;Enter a color (red, blue, green): &#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">consoleColor</span> <span class="o">=</span> <span class="nx">createColorConsole</span><span class="p">(</span><span class="nx">color</span><span class="p">);</span>
+    <span class="nx">consoleColor</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`This is a </span><span class="si">${</span><span class="nx">color</span><span class="si">}</span><span class="sb"> message!`</span><span class="p">);</span>
+    <span class="nx">rl</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
@@ -541,6 +653,28 @@
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/node.js-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F-builder-design-pattern/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Node.js 建造者模式 (Builder Design Pattern)</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     

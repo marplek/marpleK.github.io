@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Node.js實現建造者模式 (Builder Design Pattern)'>
+<title>Node.js 建造者模式 (Builder Design Pattern)</title>
+
+<link rel='canonical' href='https://blog.marplek.online/p/node.js-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F-builder-design-pattern/'>
+
+<link rel="stylesheet" href="/scss/style.min.f2f21d9d961219a01621263328d8997e1ae3b4f0371d455628df1fdc27d57bd6.css"><meta property='og:title' content='Node.js 建造者模式 (Builder Design Pattern)'>
+<meta property='og:description' content='Node.js實現建造者模式 (Builder Design Pattern)'>
+<meta property='og:url' content='https://blog.marplek.online/p/node.js-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F-builder-design-pattern/'>
+<meta property='og:site_name' content='MarpleK&#39;s blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='design_pattern' /><meta property='article:tag' content='node.js' /><meta property='article:published_time' content='2023-03-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-06T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Node.js 建造者模式 (Builder Design Pattern)">
+<meta name="twitter:description" content="Node.js實現建造者模式 (Builder Design Pattern)">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huee93432413c7e3680f29edafc018adb4_12593_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">MarpleK&#39;s blog</a></h1>
+            <h2 class="site-description">Hi</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/marpleK'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#基本介紹">基本介紹</a></li>
+    <li><a href="#優點">優點：</a></li>
+    <li><a href="#範例">範例：</a>
+      <ol>
+        <li><a href="#基礎範例">基礎範例</a></li>
+        <li><a href="#使用-builder-模式">使用 Builder 模式</a></li>
+      </ol>
+    </li>
+    <li><a href="#練習">練習</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/node.js/" >
+                node.js
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/node.js-%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F-builder-design-pattern/">Node.js 建造者模式 (Builder Design Pattern)</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            Node.js實現建造者模式 (Builder Design Pattern)
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 06, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="基本介紹">基本介紹</h2>
+<p>Builder模式是一種創建型設計模式，它的主要目的是簡化複雜對象的創建過程。通過提供一個流暢的接口來簡化複雜對象的創建，允許我們逐步構建對象。</p>
+<h2 id="優點">優點：</h2>
+<ol>
+<li><strong>提高可讀性</strong>：Builder模式通過提供一個流暢的接口來簡化複雜對象的創建，使代碼更加直觀和易於理解。</li>
+<li><strong>靈活性</strong>：Builder模式允許開發者逐步構建對象，代表可以基於不同的條件或配置動態地創建對象。</li>
+<li><strong>減少錯誤</strong>：由於Builder模式將對象的創建過程分解成多個明確的步驟，這有助於減少由於遺漏參數或提供不正確的參數值而導致的錯誤。</li>
+<li><strong>支持鏈式調用</strong>：Builder模式通常支持方法鏈接，這使得創建對象的過程更加流暢和組織化。</li>
+</ol>
+<h2 id="範例">範例：</h2>
+<h3 id="基礎範例">基礎範例</h3>
+<p>想像有一個<code>Boat</code>類，它的構造函數如下：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Boat</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">hasMotor</span><span class="p">,</span> <span class="nx">motorCount</span><span class="p">,</span> <span class="nx">motorBrand</span><span class="p">,</span> <span class="nx">motorModel</span><span class="p">,</span> <span class="nx">hasSails</span><span class="p">,</span> <span class="nx">sailsCount</span><span class="p">,</span> <span class="nx">sailsMaterial</span><span class="p">,</span> <span class="nx">sailsColor</span><span class="p">,</span> <span class="nx">hullColor</span><span class="p">,</span> <span class="nx">hasCabin</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// ...
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>調用這個構造函數程式碼可讀性較低</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">myBoat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Boat</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Best Motor Co. &#39;</span><span class="p">,</span> <span class="s1">&#39;OM123&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;fabric&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>改進此構造函數是將所有參數整合到單一的物件中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">Boat</span> <span class="p">{</span>  
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">allParameters</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="c1">// ...  
+</span><span class="c1"></span>  <span class="p">}</span>  
+<span class="p">}</span>  
+  
+<span class="kr">const</span> <span class="nx">myBoat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Boat</span><span class="p">({</span>  
+  <span class="nx">hasMotor</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>  
+  <span class="nx">motorCount</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>  
+  <span class="nx">motorBrand</span><span class="o">:</span> <span class="s1">&#39;Best Motor Co. &#39;</span><span class="p">,</span>  
+  <span class="nx">motorModel</span><span class="o">:</span> <span class="s1">&#39;OM123&#39;</span><span class="p">,</span>  
+  <span class="nx">hasSails</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>  
+  <span class="nx">sailsCount</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>  
+  <span class="nx">sailsMaterial</span><span class="o">:</span> <span class="s1">&#39;fabric&#39;</span><span class="p">,</span>  
+  <span class="nx">sailsColor</span><span class="o">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span>  
+  <span class="nx">hullColor</span><span class="o">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span>  
+  <span class="nx">hasCabin</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>  
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果某些參數是相互依賴的或需要按特定順序設置，則使用單一物件可能會導致物件處於不完整或不一致的狀態。例如指定了<code>hasMotor: true</code>，還需要指定<code>motorCount</code>, <code>motorBrand</code>, <code>motorModel</code> 參數的值，但除非查看源代碼，否則我們並不曉得。</p>
+<h3 id="使用-builder-模式">使用 Builder 模式</h3>
+<p>Builder模式提供了一個流暢的接口，使得代碼更加直觀和易於閱讀。對於具有多個配置選項的複雜對象，Builder模式可以確保對象始終處於有效和一致的狀態。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">class</span> <span class="nx">BoatBuilder</span> <span class="p">{</span>  
+  <span class="nx">withMotors</span><span class="p">(</span><span class="nx">count</span><span class="p">,</span> <span class="nx">brand</span><span class="p">,</span> <span class="nx">model</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">hasMotor</span> <span class="o">=</span> <span class="kc">true</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">motorCount</span> <span class="o">=</span> <span class="nx">count</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">motorBrand</span> <span class="o">=</span> <span class="nx">brand</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">motorModel</span> <span class="o">=</span> <span class="nx">model</span>  
+    <span class="k">return</span> <span class="k">this</span>  
+  <span class="p">}</span>  
+  
+  <span class="nx">withSails</span><span class="p">(</span><span class="nx">count</span><span class="p">,</span> <span class="nx">material</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">hasSails</span> <span class="o">=</span> <span class="kc">true</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">sailsCount</span> <span class="o">=</span> <span class="nx">count</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">sailsMaterial</span> <span class="o">=</span> <span class="nx">material</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">sailsColor</span> <span class="o">=</span> <span class="nx">color</span>  
+    <span class="k">return</span> <span class="k">this</span>  
+  <span class="p">}</span>  
+  
+  <span class="nx">hullColor</span><span class="p">(</span><span class="nx">color</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">hullColor</span> <span class="o">=</span> <span class="nx">color</span>  
+    <span class="k">return</span> <span class="k">this</span>  
+  <span class="p">}</span>  
+  
+  <span class="nx">withCabin</span><span class="p">()</span> <span class="p">{</span>  
+    <span class="k">this</span><span class="p">.</span><span class="nx">hasCabin</span> <span class="o">=</span> <span class="kc">true</span>  
+    <span class="k">return</span> <span class="k">this</span>  
+  <span class="p">}</span>  
+  
+  <span class="nx">build</span><span class="p">()</span> <span class="p">{</span>  
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">Boat</span><span class="p">({</span>  
+      <span class="nx">hasMotor</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasMotor</span><span class="p">,</span>  
+      <span class="nx">motorCount</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">motorCount</span><span class="p">,</span>  
+      <span class="nx">motorBrand</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">motorBrand</span><span class="p">,</span>  
+      <span class="nx">motorModel</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">motorModel</span><span class="p">,</span>  
+      <span class="nx">hasSails</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasSails</span><span class="p">,</span>  
+      <span class="nx">sailsCount</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">sailsCount</span><span class="p">,</span>  
+      <span class="nx">sailsMaterial</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">sailsMaterial</span><span class="p">,</span>  
+      <span class="nx">sailsColor</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">sailsColor</span><span class="p">,</span>  
+      <span class="nx">hullColor</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">hullColor</span><span class="p">,</span>  
+      <span class="nx">hasCabin</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">hasCabin</span>  
+    <span class="p">})</span>  
+  <span class="p">}</span>  
+<span class="p">}</span>  
+  
+<span class="kr">const</span> <span class="nx">myBoat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BoatBuilder</span><span class="p">()</span>  
+  <span class="p">.</span><span class="nx">withMotors</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Best Motor Co. &#39;</span><span class="p">,</span> <span class="s1">&#39;OM123&#39;</span><span class="p">)</span>  
+  <span class="p">.</span><span class="nx">withSails</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;fabric&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">)</span>  
+  <span class="p">.</span><span class="nx">withCabin</span><span class="p">()</span>  
+  <span class="p">.</span><span class="nx">hullColor</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>  
+  <span class="p">.</span><span class="nx">build</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="練習">練習</h2>
+<p>建立自己的 Builder 類別，圍繞內建的 http.request() 函數。這個生成器必須至少提供基本的設置HTTP方法、URL、URL的查詢組件、標頭參數和可能要發送的內容數據的功能。為了發送請求，提供一個 invoke() 方法，該方法返回請求調用的 Promise。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">);</span>
+
+<span class="kr">class</span> <span class="nx">RequestBuilder</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="s1">&#39;GET&#39;</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">headers</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">bodyData</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">setMethod</span><span class="p">(</span><span class="nx">method</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">method</span> <span class="o">=</span> <span class="nx">method</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">setUrl</span><span class="p">(</span><span class="nx">targetUrl</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">parsedUrl</span> <span class="o">=</span> <span class="nx">url</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">targetUrl</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">=</span> <span class="nx">parsedUrl</span><span class="p">.</span><span class="nx">hostname</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">port</span> <span class="o">=</span> <span class="nx">parsedUrl</span><span class="p">.</span><span class="nx">port</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">path</span> <span class="o">=</span> <span class="nx">parsedUrl</span><span class="p">.</span><span class="nx">path</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">setQuery</span><span class="p">(</span><span class="nx">queryObj</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">queryStr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">url</span><span class="p">.</span><span class="nx">URLSearchParams</span><span class="p">(</span><span class="nx">queryObj</span><span class="p">).</span><span class="nx">toString</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">path</span> <span class="o">+=</span> <span class="sb">`?</span><span class="si">${</span><span class="nx">queryStr</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">setHeaders</span><span class="p">(</span><span class="nx">headers</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">headers</span> <span class="o">=</span> <span class="nx">headers</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">setBodyData</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">bodyData</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">invoke</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+            <span class="kr">const</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="nx">method</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">method</span><span class="p">,</span>
+                <span class="nx">hostname</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">hostname</span><span class="p">,</span>
+                <span class="nx">port</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">port</span><span class="p">,</span>
+                <span class="nx">path</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">path</span><span class="p">,</span>
+                <span class="nx">headers</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span>
+            <span class="p">};</span>
+
+            <span class="kr">const</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                <span class="kd">let</span> <span class="nx">data</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">data</span> <span class="o">+=</span> <span class="nx">chunk</span><span class="p">;</span>
+                <span class="p">});</span>
+                <span class="nx">res</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                    <span class="nx">resolve</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+                <span class="p">});</span>
+            <span class="p">});</span>
+
+            <span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                <span class="nx">reject</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+            <span class="p">});</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">bodyData</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">bodyData</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RequestBuilder</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">setMethod</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">setUrl</span><span class="p">(</span><span class="s1">&#39;http://example.com&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">setQuery</span><span class="p">({</span> <span class="nx">key</span><span class="o">:</span> <span class="s1">&#39;value&#39;</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">setHeaders</span><span class="p">({</span> <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">invoke</span><span class="p">()</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">)</span>
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+
+</code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/design_pattern/">design_pattern</a>
+        
+            <a href="/tags/node.js/">node.js</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/node.js-%E5%B7%A5%E5%BB%A0%E6%A8%A1%E5%BC%8F-factory-design-pattern/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Node.js 工廠模式 (Factory Design Pattern)</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "marpleK" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 MarpleK&#39;s blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.19.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
