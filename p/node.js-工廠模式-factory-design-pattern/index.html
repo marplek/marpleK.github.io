@@ -10,7 +10,7 @@
 <meta property='og:description' content='Node.js 實現工廠模式 (Factory Design Pattern)'>
 <meta property='og:url' content='https://blog.marplek.online/p/node.js-%E5%B7%A5%E5%BB%A0%E6%A8%A1%E5%BC%8F-factory-design-pattern/'>
 <meta property='og:site_name' content='MarpleK&#39;s blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='node.js' /><meta property='article:tag' content='design_pattern' /><meta property='article:published_time' content='2023-03-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-05T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='design_pattern' /><meta property='article:tag' content='node' /><meta property='article:published_time' content='2023-03-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-03-05T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Node.js 工廠模式 (Factory Design Pattern)">
 <meta name="twitter:description" content="Node.js 實現工廠模式 (Factory Design Pattern)">
     <link rel="shortcut icon" href="/favicon.png" />
@@ -208,11 +208,12 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#優點">優點</a></li>
-    <li><a href="#基本介紹">基本介紹</a></li>
+    <li><a href="#優點">優點：</a></li>
+    <li><a href="#基本介紹">基本介紹：</a></li>
     <li><a href="#範例">範例</a></li>
     <li><a href="#封裝">封裝</a></li>
     <li><a href="#練習">練習</a></li>
+    <li><a href="#參考資料">參考資料</a></li>
   </ol>
 </nav>
         </div>
@@ -296,7 +297,7 @@
     <section class="article-content">
     
     
-    <h2 id="優點">優點</h2>
+    <h2 id="優點">優點：</h2>
 <p>在Node.js中，工廠模式 (Factory Design Pattern)的主要的優點有</p>
 <ol>
 <li><strong>解耦對象的創建和實現</strong>：工廠模式允許我們將物件(object)的創建過程與其具體的實現分開。這意味著，如果需要更改物件的實現方式，只需更改工廠函數，而不需要修改使用該物件的其他代碼。</li>
@@ -307,7 +308,7 @@
 <li><strong>靈活性</strong>：工廠模式提供了很大的靈活性，允許輕鬆地添加新的物件類型或更改現有物件的實現方式。</li>
 <li><strong>更好的控制物件的生命週期</strong>：工廠模式允許更細緻地控制物件的創建和初始化過程，例如，可以在物件被返回之前進行一些額外的設置或檢查。</li>
 </ol>
-<h2 id="基本介紹">基本介紹</h2>
+<h2 id="基本介紹">基本介紹：</h2>
 <p>例如，需要創建Image，<br>
 比起直接創建Image的類，<br>
 這樣的方式幾乎把物件的創建方式定死了</p>
@@ -617,7 +618,10 @@
 <span class="p">});</span>
 </code></pre></td></tr></table>
 </div>
-</div>
+</div><h2 id="參考資料">參考資料</h2>
+<p><a class="link" href="https://www.amazon.com/Node-js-Design-Patterns-production-grade-applications/dp/1839214112"  target="_blank" rel="noopener"
+    >Node.js Design Patterns: Design and implement production-grade Node.js applications using proven patterns and techniques, 3rd Edition</a></p>
+
 </section>
 
 
@@ -625,9 +629,9 @@
     
     <section class="article-tags">
         
-            <a href="/tags/node.js/">node.js</a>
-        
             <a href="/tags/design_pattern/">design_pattern</a>
+        
+            <a href="/tags/node/">node</a>
         
     </section>
 
@@ -658,6 +662,19 @@
     <h2 class="section-title">Related content</h2>
     <div class="related-content">
         <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/node.js-%E5%96%AE%E4%BE%8B%E6%A8%A1%E5%BC%8F-singleton-design-pattern/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Node.js 單例模式 (Singleton Design Pattern)</h2>
+        </div>
+    </a>
+</article>
+
             
                 
 <article class="">
